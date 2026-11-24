@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10秒ぴったりゲーム</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app" id="app" data-state="idle">
+    <!-- 初期画面 -->
+    <section class="screen screen--idle" id="screen-idle" aria-labelledby="game-title">
+      <div class="card">
+        <h1 class="title" id="game-title">10秒ぴったりゲーム</h1>
+        <p class="lead">スタートを押して、<span class="nowrap">心の中で10秒かぞえよう！</span></p>
+        <button type="button" class="action-btn action-btn--start" id="btn-start">
+          スタート
+        </button>
+        <p class="key-hint">スペースキー・Enterキーでも操作できます</p>
+      </div>
+    </section>
+
+    <!-- 計測中画面（経過時間・カウントダウン・進み具合は一切表示しない） -->
+    <section class="screen screen--running" id="screen-running" hidden aria-live="polite">
+      <div class="card card--running">
+        <div class="start-cue-slot" aria-live="assertive">
+          <span class="start-cue" id="start-cue" aria-hidden="true">スタート！</span>
+        </div>
+        <p class="running-message">10秒だと思ったら押そう！</p>
+        <button type="button" class="action-btn action-btn--stop" id="btn-stop">
+          ストップ
+        </button>
+      </div>
+    </section>
+
+    <!-- 結果画面 -->
+    <section class="screen screen--result" id="screen-result" hidden aria-live="polite">
+      <div class="card card--result" id="result-card">
+        <p class="result-label">きろく</p>
+        <p class="result-time" id="result-time">10.00秒</p>
+        <p class="result-diff" id="result-diff">ぴったり！</p>
+        <button type="button" class="action-btn action-btn--retry" id="btn-retry">
+          もう一回
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
